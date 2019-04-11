@@ -6,6 +6,10 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
-    </style>
 
+    </style>
+<style name="BottomNavigationTheme" parent="Theme.AppCompat.Light">
+    <item name="colorPrimary">@color/colorPrimary</item>
+    <item name="android:textColorSecondary">@color/black</item>
+</style>
 </resources>
