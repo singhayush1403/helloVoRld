@@ -15,8 +15,10 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottomnavmenu);
-        bottomNavigationView.setSelectedItemId(R.id.action_projects);
-       
+        Fragment fragment;
+        fragment=new Projects();
+       getSupportFragmentManager().beginTransaction().replace(R.id.container,fragment).commit();
+
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {

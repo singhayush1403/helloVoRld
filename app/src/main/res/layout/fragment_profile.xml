@@ -2,19 +2,78 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:background="@drawable/roundaboutus"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="#3F51B5"
     android:layout_height="match_parent"
     tools:context=".Profile">
 <android.support.v7.widget.CardView
-    android:layout_width="wrap_content"
+    android:layout_width="match_parent"
+    android:layout_marginRight="20dp"
+    android:layout_marginLeft="20dp"
+    android:backgroundTint="#FFC107"
     android:layout_gravity="center"
-    android:layout_height="wrap_content"
-    android:background="@color/white">
-    <TextView
-        android:padding="16dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="ayush"/>
+    android:layout_height="400dp"
+    app:cardCornerRadius="15dp"
+    android:background="#FFC107">
+   <RelativeLayout
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:orientation="vertical">
+
+       <TextView
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:paddingLeft="10dp"
+           android:paddingTop="10dp"
+           android:paddingBottom="20dp"
+           android:text="Projects :"
+           android:id="@+id/tvprojects"
+           android:textColor="#000000 "
+           android:textSize="24sp"
+           android:textStyle="bold" />
+       <TextView
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+          android:layout_below="@+id/tvprojects"
+           android:layout_marginLeft="10dp"
+           android:text="Renders :"
+           android:layout_marginBottom="20dp"
+           android:id="@+id/tvrender"
+           android:textSize="24sp"
+           android:textStyle="bold"
+           android:textColor="#000000"/>
+       <TextView
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:textSize="24sp"
+           android:textStyle="bold"
+           android:id="@+id/tvsub"
+           android:textColor="#000000"
+           android:layout_marginLeft="10dp"
+           android:text="Subscription :"
+           android:layout_below="@+id/tvrender"
+           />
+       <TextView
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:textSize="24sp"
+           android:textStyle="bold"
+           android:layout_below="@+id/tvsub"
+           android:textColor="#000000"
+           android:layout_marginTop="20dp"
+           android:layout_marginLeft="10dp"
+           android:text="Payments :"/>
+      <Button
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+         android:layout_marginLeft="135dp"
+          android:paddingBottom="0dp"
+          android:text="LOGOUT"
+          android:layout_marginBottom="20dp"
+          android:textColor="@color/white"
+          android:background="@drawable/roundblack"
+          android:layout_alignParentBottom="true"/>
+   </RelativeLayout>
 </android.support.v7.widget.CardView>
     <!-- TODO: Update blank fragment layout -->
 
