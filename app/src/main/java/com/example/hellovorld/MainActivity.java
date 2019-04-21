@@ -16,8 +16,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottomnavmenu);
         Fragment fragment;
-        fragment=new Projects();
-       getSupportFragmentManager().beginTransaction().replace(R.id.container,fragment).commit();
+        fragment = new Projects();
+        getSupportFragmentManager().beginTransaction().replace(R.id.container, fragment).commit();
 
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override

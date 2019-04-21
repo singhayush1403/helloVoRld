@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "10990369049",
+    "firebase_url": "https://hellovorld-8fcea.firebaseio.com",
+    "project_id": "hellovorld-8fcea",
+    "storage_bucket": "hellovorld-8fcea.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:10990369049:android:ad634626ceea2afb",
+        "android_client_info": {
+          "package_name": "com.example.hellovorld"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "10990369049-vjcdh9q1htgt387m2rg5b4ivdj89ufs5.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.hellovorld",
+            "certificate_hash": "1e6a7cb334d12bc77b63a6676d7b74b0a355f120"
+          }
+        },
+        {
+          "client_id": "10990369049-d4ub0l0tr8odh4gm9fksjclq1taegl5i.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBuY9jB6yKGwNkYHZ9a-F-y11m2nRi_nzE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "10990369049-d4ub0l0tr8odh4gm9fksjclq1taegl5i.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

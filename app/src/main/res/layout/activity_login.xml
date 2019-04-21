@@ -20,38 +20,66 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:fontFamily="@font/archivo_black"
-        android:paddingBottom="30dp"
         android:text="Welcome to helloVoRld"
-        android:textColor="#ffffff"
+        android:textColor="@color/white"
+        android:textSize="24sp" />
 
-        android:textSize="28sp" />
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="80dp"
-        android:layout_gravity="center_horizontal"
-        android:layout_margin="20dp"
-        android:background="@drawable/roundwhite"
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-        android:drawableLeft="@drawable/google"
-        android:fontFamily="sans-serif"
-        android:padding="16dp"
-        android:paddingBottom="20dp"
-        android:text="Login with google"
-        android:textColor="#000000"
-        android:textStyle="bold" />
+        <EditText
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/round"
+            android:hint="Email"
+            android:id="@+id/loginemail"
+            android:includeFontPadding="true"
+            android:inputType="textEmailAddress"
+            android:padding="10dp"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white" />
+        <EditText
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/round"
+            android:ems="10"
+            android:id="@+id/loginpasswd"
+            android:hint="Password"
+            android:inputType="textPassword"
+            android:outlineSpotShadowColor="@color/white"
+            android:padding="10dp"
+            android:textColor="@color/white"
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="80dp"
-        android:layout_gravity="center_horizontal"
-        android:background="@drawable/round"
-        android:drawableLeft="@drawable/icon"
-        android:fontFamily="sans-serif"
-        android:includeFontPadding="true"
-        android:padding="10dp"
-        android:text="Login with facebook"
-        android:textColor="#ffffff"
-        android:textStyle="bold" />
+            android:textColorHint="@color/white" />
+
+
+        <Button
+            android:layout_width="180dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="10dp"
+            android:id="@+id/login"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/roundloginbutton"
+            android:text="Login" />
+
+
+        <TextView
+            android:layout_width="wrap_content"
+          android:id="@+id/tvregister"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="Not yet registered? Register here"
+            android:textColor="@color/white" />
+    </LinearLayout>
+
 </LinearLayout>

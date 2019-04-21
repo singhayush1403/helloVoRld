@@ -12,8 +12,9 @@ import android.widget.TextView;
 import java.util.List;
 
 public class ProjectsAdapter extends RecyclerView.Adapter<ProjectsAdapter.MyViewHolder> {
-Context mcontext;
-List<Projectsdata> data;
+    Context mcontext;
+    List<Projectsdata> data;
+
     public ProjectsAdapter(Context mcontext, List<Projectsdata> data) {
         this.mcontext = mcontext;
         this.data = data;
@@ -24,7 +25,7 @@ List<Projectsdata> data;
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int i) {
         View v;
-        v = LayoutInflater.from(mcontext).inflate(R.layout.projectsrecyclerview,parent, false);
+        v = LayoutInflater.from(mcontext).inflate(R.layout.projectsrecyclerview, parent, false);
         MyViewHolder viewHolder = new MyViewHolder(v);
 
         return viewHolder;
@@ -32,7 +33,8 @@ List<Projectsdata> data;
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder myViewHolder, int position) {
-myViewHolder.name.setText(data.get(position).getName());
+        myViewHolder.name.setText(data.get(position).getName());
+  //      myViewHolder.progress.setText(data.get(position).getProgress());
     }
 
     @Override
@@ -42,9 +44,12 @@ myViewHolder.name.setText(data.get(position).getName());
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
         private TextView name;
+   //     private TextView progress;
+
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
-            name=itemView.findViewById(R.id.projectname);
+            name = itemView.findViewById(R.id.projectname);
+ //          progress = itemView.findViewById(R.id.tvprogress);
         }
     }
 }
