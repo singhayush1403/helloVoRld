@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Register"
-    android:background=""
+    android:background="@drawable/registerbg"
     >
 
     <EditText
@@ -16,8 +16,11 @@
         android:layout_marginTop="208dp"
         android:layout_marginEnd="99dp"
         android:ems="10"
-
+        android:textColor="@color/white"
+        android:background="@drawable/roundblack"
         android:hint="email address"
+        android:padding="10dp"
+        android:textColorHint="@color/white"
         android:inputType="textEmailAddress"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -28,6 +31,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="99dp"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white"
+        android:background="@drawable/roundblack"
+        android:padding="10dp"
         android:layout_marginTop="22dp"
         android:layout_marginEnd="100dp"
         android:ems="10"
@@ -44,9 +51,24 @@
         android:layout_marginStart="161dp"
         android:layout_marginTop="64dp"
         android:layout_marginEnd="162dp"
+        android:background="@drawable/roundwhite"
         android:text="Register"
+        android:padding="5dp"
+        android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/passwdregister" />
+
+    <ImageView
+        android:id="@+id/logo"
+        android:layout_width="282dp"
+        android:layout_height="140dp"
+        android:layout_marginStart="64dp"
+        android:layout_marginTop="45dp"
+        android:layout_marginEnd="65dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/logo" />
 </android.support.constraint.ConstraintLayout>

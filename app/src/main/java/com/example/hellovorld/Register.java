@@ -16,6 +16,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -27,7 +28,7 @@ import com.google.firebase.firestore.QuerySnapshot;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Register extends AppCompatActivity {
+public class Register extends AppCompatActivity implements View.OnClickListener {
     private static final String DEFAULT_DESIGNER_ACCESS_CODE = "000000";
     FirebaseFirestore db;
     FirebaseUser user;
@@ -45,16 +46,14 @@ public class Register extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
+        FirebaseApp.initializeApp(this);
+        db = FirebaseFirestore.getInstance();
+        mAuth = FirebaseAuth.getInstance();
         mEmailField = findViewById(R.id.emailregister);
         mPasswordField = findViewById(R.id.passwdregister);
         Button register = findViewById(R.id.buttonregister);
-        register.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                createAccount(mEmailField.getText().toString(), mPasswordField.getText().toString());
+        register.setOnClickListener(this);
 
-            }
-        });
     }
 
     private void createAccount(String email, String password) {
@@ -72,8 +71,10 @@ public class Register extends AppCompatActivity {
                     user = mAuth.getCurrentUser();
                     updateUI(user);
                     createUserAccountInFirestore(user);
-                    startActivity(new Intent(Register.this, MainActivity.class));
-                    finish();
+                    Intent intent=new  Intent(Register.this,MainActivity.class);
+                    intent.putExtra("USER",user);
+                    startActivity(intent);
+
                 } else {
                     Log.w(TAG, "createUserWithEmail:failure", task.getException());
                     Toast.makeText(Register.this, "Authentication Failed.", Toast.LENGTH_SHORT).show();
@@ -169,6 +170,16 @@ public class Register extends AppCompatActivity {
                 }
             }
 
+        }
+    }
+
+    @Override
+    public void onClick(View view) {
+        int i = view.getId();
+        switch (i) {
+            case R.id.buttonregister:
+                createAccount(mEmailField.getText().toString(), mPasswordField.getText().toString());
+                break;
         }
     }
 }

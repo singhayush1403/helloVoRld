@@ -74,35 +74,14 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
         switch (i) {
             case R.id.login:
                 signIn(mEmailField.getText().toString(), mPasswordField.getText().toString());
+                break;
             case R.id.tvregister:
                 startActivity(new Intent(Login.this, Register.class));
                 finish();
+                break;
         }
     }
 
-
-    public boolean isDesignerCodeChanged() {
-        String orgEmail = user.getEmail();
-        db.collection("users")
-                .whereEqualTo("OrgEmail", orgEmail)
-                .get()
-                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                    @Override
-                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                        if (task.isSuccessful()) {
-                            AccessID = (String) task.getResult().getDocuments().get(0).get("AccessID");
-                            isChanged = !task.getResult().getDocuments().get(0).get("AccessID").equals(DEFAULT_DESIGNER_ACCESS_CODE);
-                        } else {
-                            Log.d(TAG, "No such users found");
-                        }
-                    }
-                });
-        return isChanged;
-    }
-
-
-    private void queryProjects() {
-    }
 
     private void signIn(String email, String password) {
         Log.d(TAG, "signIn:" + email);
@@ -121,8 +100,12 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
                             // Sign in success, update UI with the signed-in user's information
                             Log.d(TAG, "signInWithEmail:success");
                             user = mAuth.getCurrentUser();
-                            updateUI(user);
-                            startActivity(new Intent(Login.this, MainActivity.class));
+                            // updateUI(user);
+
+                            Intent intent = new Intent(Login.this, MainActivity.class);
+                            intent.putExtra("USER", user);
+                            startActivity(intent);
+
                             finish();
                         } else {
                             // If sign in fails, display a message to the user.
@@ -134,7 +117,6 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
 
                         // [START_EXCLUDE]
                         if (!task.isSuccessful()) {
-
                             // mStatusTextView.setText(R.string.auth_failed);
                         }
                         hideProgressDialog();

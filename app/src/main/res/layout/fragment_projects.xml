@@ -7,12 +7,17 @@
     tools:context=".Projects">
 
     <!-- TODO: Update blank fragment layout -->
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/refresh"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-<android.support.v7.widget.RecyclerView
-    android:layout_width="wrap_content"
-    android:id="@+id/projectsrv"
-    android:layout_height="wrap_content"
-    android:padding="16dp">
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/projectsrv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="16dp">
 
-</android.support.v7.widget.RecyclerView>
+        </android.support.v7.widget.RecyclerView>
+    </android.support.v4.widget.SwipeRefreshLayout>
 </FrameLayout>
