@@ -1,7 +1,7 @@
 package com.example.hellovorld;
 
-import android.content.Intent;
 import android.support.annotation.NonNull;
+import android.support.design.internal.BottomNavigationMenu;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
@@ -9,6 +9,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.view.MenuItem;
+import android.widget.FrameLayout;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -19,7 +20,7 @@ import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
 
-public class MainActivity extends AppCompatActivity {
+public class Visualiser extends AppCompatActivity {
     String id;
     private String DEFAULT_DESIGNER_ACCESS_CODE = "000000";
     private FirebaseFirestore db;
@@ -39,46 +40,33 @@ public class MainActivity extends AppCompatActivity {
     private FirestoreRecyclerAdapter firestoreRecyclerAdapter;
 
     @Override
-    protected void onCreate(final Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        BottomNavigationView bottomNavigationView = findViewById(R.id.bottomnavmenu);
-        Fragment fragment;
-        bottomNavigationView.getMenu().findItem(R.id.action_profile).setChecked(true);
-fragment=new Profile();
-getSupportFragmentManager().beginTransaction().replace(R.id.container,fragment).commit();
+        setContentView(R.layout.activity_visualiser);
+        FrameLayout frameLayout = findViewById(R.id.containerv);
+        BottomNavigationView bottomNavigationView = findViewById(R.id.bottommenu);
+        bottomNavigationView.getMenu().findItem(R.id.action_projects).setChecked(true);
         db = FirebaseFirestore.getInstance();
         mAuth = FirebaseAuth.getInstance();
         user = mAuth.getCurrentUser();
-
-        if (user != null) {
-            orgEmail = user.getEmail();
-            db.collection("users").whereEqualTo("OrgEmail", orgEmail).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                @Override
-                public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                    if (task.getResult().isEmpty()) {
-                    startActivity(new Intent(MainActivity.this,Visualiser.class));
-                    finish();
-                    } else {
-                        AccessID = task.getResult().getDocuments().get(0).get("AccessID").toString();
-                        
-                    }
-                }
-            });
-        } else {
-            startActivity(new Intent(MainActivity.this, Login.class));
-            finish();
-        }
-        id = getIntent().getStringExtra("ID");
+        orgEmail = user.getEmail();
+        db.collection("users_v").whereEqualTo("OrgEmail", orgEmail).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                AccessID=task.getResult().getDocuments().get(0).get("AccessID").toString();
+                Toast.makeText(getApplicationContext(),AccessID,Toast.LENGTH_LONG).show();
+            }
+        });
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
                 Fragment fragment = null;
                 switch (menuItem.getItemId()) {
                     case R.id.action_projects:
-                        fragment = new Projects();
+                        fragment = new VProjects();
+
                         Bundle bundle = new Bundle();
-                        bundle.putString("id", AccessID);
+                        bundle.putString("id",AccessID);
                         fragment.setArguments(bundle);
                         break;
                     case R.id.action_about:
@@ -96,7 +84,7 @@ getSupportFragmentManager().beginTransaction().replace(R.id.container,fragment).
                 }
 
 
-                getSupportFragmentManager().beginTransaction().replace(R.id.container, fragment)
+                getSupportFragmentManager().beginTransaction().replace(R.id.containerv, fragment)
                         .commit();
                 return true;
             }

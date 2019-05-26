@@ -3,17 +3,35 @@ package com.example.hellovorld;
 import android.widget.TextView;
 
 public class Changes {
-    private TextView changes;
 
-    public Changes(TextView changes) {
-        this.changes = changes;
+    private String mName;
+    private String mImageUrl;
+
+    public Changes() {
     }
 
-    public TextView getChanges() {
-        return changes;
+    public Changes (String name, String imageUrl) {
+        if (name.trim().equals("")) {
+            name = "No Name";
+        }
+
+        mName = name;
+        mImageUrl = imageUrl;
     }
 
-    public void setChanges(TextView changes) {
-        this.changes = changes;
+    public String getName() {
+        return mName;
+    }
+
+    public void setName(String name) {
+        mName = name;
+    }
+
+    public String getImageUrl() {
+        return mImageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        mImageUrl = imageUrl;
     }
 }

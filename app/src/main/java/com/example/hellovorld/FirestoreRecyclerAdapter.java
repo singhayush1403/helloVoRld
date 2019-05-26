@@ -1,5 +1,6 @@
 package com.example.hellovorld;
 
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -11,7 +12,7 @@ import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.firebase.firestore.DocumentSnapshot;
 
 public class FirestoreRecyclerAdapter extends com.firebase.ui.firestore.FirestoreRecyclerAdapter<Projectsdata, FirestoreRecyclerAdapter.ProjectHolder> {
-
+    private OnItemClickListener listener;
 
     public FirestoreRecyclerAdapter(@NonNull FirestoreRecyclerOptions options) {
 
@@ -21,11 +22,12 @@ public class FirestoreRecyclerAdapter extends com.firebase.ui.firestore.Firestor
 
     @Override
     protected void onBindViewHolder(@NonNull ProjectHolder holder, int position, @NonNull Projectsdata model) {
-      //  holder.nocompleted.setText(String.valueOf(model.getnocompleted()));
-    //    holder.total.setText(String.valueOf(model.getTotal()));
-        DocumentSnapshot snapshot=getSnapshots().getSnapshot(holder.getAdapterPosition());
+        //  holder.nocompleted.setText(String.valueOf(model.getnocompleted()));
+        //    holder.total.setText(String.valueOf(model.getTotal()));
+        DocumentSnapshot snapshot = getSnapshots().getSnapshot(holder.getAdapterPosition());
 
         holder.Name.setText(snapshot.getId());
+
     }
 
     @NonNull
@@ -36,16 +38,34 @@ public class FirestoreRecyclerAdapter extends com.firebase.ui.firestore.Firestor
     }
 
     class ProjectHolder extends RecyclerView.ViewHolder {
-  //      TextView nocompleted;
-   //     TextView total;
+        //      TextView nocompleted;
+        //     TextView total;
         TextView Name;
 
         public ProjectHolder(@NonNull View itemView) {
             super(itemView);
             Name = itemView.findViewById(R.id.projectname);
-   //         nocompleted = itemView.findViewById(R.id.nocompleted);
-      //      total = itemView.findViewById(R.id.total);
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    int position = getAdapterPosition();
+                    if (position != RecyclerView.NO_POSITION && listener != null) {
+                        listener.onItemClick(getSnapshots().getSnapshot(position), position);
+                    }
+                }
+            });
+            //         nocompleted = itemView.findViewById(R.id.nocompleted);
+            //      total = itemView.findViewById(R.id.total);
 
         }
+    }
+
+    public interface OnItemClickListener {
+        void onItemClick(DocumentSnapshot snapshot, int position);
+
+    }
+
+    public void setOnItemClickListener(OnItemClickListener listener)     {
+        this.listener = listener;
     }
 }

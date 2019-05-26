@@ -35,9 +35,10 @@ FirebaseAuth mAuth;
             public void onClick(View view) {
                 mAuth.signOut();
 startActivity(new Intent(getActivity(),Login.class));
-
+getActivity().finish();
             }
         });
+
         return v;
     }
 

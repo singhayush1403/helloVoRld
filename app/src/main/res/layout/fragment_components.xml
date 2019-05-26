@@ -4,16 +4,16 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#607D8B"
-    tools:context=".Projects">
+    tools:context=".Components">
 
     <!-- TODO: Update blank fragment layout -->
 
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/projectsrv"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:padding="16dp">
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/comrv"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="16dp">
 
-        </android.support.v7.widget.RecyclerView>
+    </android.support.v7.widget.RecyclerView>
 
 </FrameLayout>
